@@ -22,7 +22,7 @@
 
 		print 'スタッフ一覧 <br /><br />';
 
-		print '<form method = "post" action ="staff_edit.php">';
+		print '<form method = "post" action ="staff_branch.php">';
 		// $stmtから1レコードを取得
 		while(true){
 			$rec = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -34,7 +34,8 @@
 			print $rec['name'];
 			print '<br />';
 		}
-		print '<input type = "submit" value = "修正">';
+		print '<input type = "submit" name = "edit" value = "修正">';
+		print '<input type = "submit" name = "delete" value = "削除">';
 		print '</form>';
 	}
 	// データベースの障害が発生した時の処理
