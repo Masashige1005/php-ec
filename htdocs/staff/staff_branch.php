@@ -31,5 +31,14 @@
 		header('Location:staff_add.php');
 		exit();
 	}
+	if(isset($_POST['disp']) == TRUE){
+		if(isset($_POST['staffcode']) == FALSE){
+			header('Location:staff_ng.php');
+			exit();
+		}
+		$staff_code = $_POST['staffcode'];
+		header('Location:staff_disp.php?staffcode='.$staff_code);
+		exit();
+	}
 	?>
 </body>
