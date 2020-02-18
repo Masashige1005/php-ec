@@ -27,5 +27,9 @@
 		header('Location:staff_delete.php?staffcode='.$staff_code);
 		exit();
 	}
+	if(isset($_POST['add']) == TRUE){
+		header('Location:staff_add.php');
+		exit();
+	}
 	?>
 </body>
