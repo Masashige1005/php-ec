@@ -20,6 +20,7 @@
 	$data[] = $staff_code;
 	$stmt->execute($data);
 
+	// 配列のキー文字列として使って値を格納した配列を返す
 	$rec = $stmt->fetch(PDO::FETCH_ASSOC);
 	$staff_name = $rec['name'];
 

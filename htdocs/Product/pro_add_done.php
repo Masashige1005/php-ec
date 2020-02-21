@@ -9,6 +9,7 @@
 	try{
 		$pro_name = $_POST['name'];
 		$pro_price = $_POST['price'];
+		$pro_image_name = $_POST['image_name'];
 
 		// 入力情報の安全対策
 		$pro_name = htmlspecialchars($pro_name,ENT_QUOTES,'UTF-8');
@@ -21,10 +22,11 @@
 		$dbh = new PDO($dsn,$user,$password);
 		$dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 		// SQLを使いレコードを追加
-		$sql = 'INSERT INTO mst_product(name,price)VALUES(?,?)';
+		$sql = 'INSERT INTO mst_product(name,price,image)VALUES(?,?,?)';
 		$stmt = $dbh->prepare($sql);
 		$data[] = $pro_name;
 		$data[] = $pro_price;
+		$data[] = $pro_image_name;
 		$stmt->execute($data);
 
 		// データベースから切断（ここ重要）
