@@ -41,10 +41,12 @@
 		print 'ただいま障害により大変ご迷惑をお掛けしております。';
 		exit();
 	}
-
-	if($pro_image_name_old!=''){
-		unlink('./image/'.$pro_image_name_old);
+	if($pro_image_name_old != $pro_image_name){
+		if($pro_image_name_old!=''){
+			unlink('./image/'.$pro_image_name_old);
+		}
 	}
+
 	?>
 
 	修正しました。 <br />
