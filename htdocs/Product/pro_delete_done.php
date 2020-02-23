@@ -8,6 +8,7 @@
 	<?php
 	try{
 		$pro_code = $_POST['code'];
+		$pro_image_name = $_POST['image_name'];
 
 		// データベースへの接続
 		$dsn = 'mysql:dbname=app-db;host=localhost;charset=utf8';
@@ -23,6 +24,10 @@
 
 		// データベースから切断（ここ重要）
 		$dbh = null;
+
+		if($pro_image_name != ''){
+			unlink('./image/'.$pro_image_name);
+		}
 	}
 
 	// データベースの障害が発生した時の処理
