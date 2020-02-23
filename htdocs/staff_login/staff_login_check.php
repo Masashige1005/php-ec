@@ -34,6 +34,12 @@
 			print 'スタッフコードまたはパスワードが間違えています。<br />';
 			print '<a href="staff_login.html">戻る</a>';
 		} else {
+			// ユーザー認証
+			session_start();
+			// 1の状態がログインOK!
+			$_SESSION['login'] = 1;
+			$_SESSION['staff_code'] = $staff_code;
+			$_SESSION['staff_name'] = $rec['name'];
 			header('Location:staff_top.php');
 			exit();
 		}
