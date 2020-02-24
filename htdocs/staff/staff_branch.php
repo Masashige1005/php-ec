@@ -6,10 +6,6 @@ if(isset($_SESSION['login'])==FALSE){
 	print 'ログインされていません。<br />';
 	print '<a href="../staff_login/staff_login.html">ログイン画面へ</a>';
 	exit();
-} else {
-	print $_SESSION['staff_name'];
-	print 'さんログイン中<br />';
-	print '<br />';
 }
 // 変数の中身を確認後それぞれのページへ移行
 if(isset($_POST['edit']) == TRUE){
