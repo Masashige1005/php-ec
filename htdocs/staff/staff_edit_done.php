@@ -21,13 +21,12 @@ if(isset($_SESSION['login'])==FALSE){
 <body>
 	<?php
 	try{
-		$staff_code = $_POST['code'];
-		$staff_name = $_POST['name'];
-		$staff_pass = $_POST['pass'];
+		$post = sanitize($_POST);
+		$staff_code = $post['code'];
+		$staff_name = $post['name'];
+		$staff_pass = $post['pass'];
 
-		// 入力情報の安全対策
-		$staff_name = htmlspecialchars($staff_name,ENT_QUOTES,'UTF-8');
-		$staff_pass = htmlspecialchars($staff_pass,ENT_QUOTES,'UTF-8');
+		require_once('../common/common.php')
 
 		// データベースへの接続
 		$dsn = 'mysql:dbname=app-db;host=localhost;charset=utf8';

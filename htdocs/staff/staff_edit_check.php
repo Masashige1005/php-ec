@@ -20,15 +20,13 @@ if(isset($_SESSION['login'])==FALSE){
 </head>
 <body>
 	<?php
-	$staff_code = $_POST['code'];
-	$staff_name = $_POST['name'];
-	$staff_pass = $_POST['pass'];
-	$staff_pass2 = $_POST['pass2'];
+	$post = sanitize($_POST);
+	$staff_code = $post['code'];
+	$staff_name = $post['name'];
+	$staff_pass = $post['pass'];
+	$staff_pass2 = $post['pass2'];
 
-	// 入力情報の安全対策
-	$staff_name = htmlspecialchars($staff_name,ENT_QUOTES,'UTF-8');
-	$staff_pass = htmlspecialchars($staff_pass,ENT_QUOTES,'UTF-8');
-	$staff_pass2 = htmlspecialchars($staff_pass2,ENT_QUOTES,'UTF-8');
+	require_once('../common/common.php')
 
 	if($staff_name == ''){
 		print 'スタッフの名前が入力されていません。<br />';

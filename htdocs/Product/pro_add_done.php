@@ -21,13 +21,12 @@ if(isset($_SESSION['login'])==FALSE){
 <body>
 	<?php
 	try{
-		$pro_name = $_POST['name'];
-		$pro_price = $_POST['price'];
-		$pro_image_name = $_POST['image_name'];
+		$post = sanitize($_POST);
+		$pro_name = $post['name'];
+		$pro_price = $post['price'];
+		$pro_image_name = $post['image_name'];
 
-		// 入力情報の安全対策
-		$pro_name = htmlspecialchars($pro_name,ENT_QUOTES,'UTF-8');
-		$pro_price = htmlspecialchars($pro_price,ENT_QUOTES,'UTF-8');
+		require_once('../common/common.php')
 
 		// データベースへの接続
 		$dsn = 'mysql:dbname=app-db;host=localhost;charset=utf8';

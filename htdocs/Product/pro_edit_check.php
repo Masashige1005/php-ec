@@ -20,16 +20,14 @@ if(isset($_SESSION['login'])==FALSE){
 </head>
 <body>
 	<?php
-	$pro_code = $_POST['code'];
-	$pro_name = $_POST['name'];
-	$pro_price = $_POST['price'];
-	$pro_image_name_old = $_POST['image_name_old'];
+	$post = sanitize($_POST);
+	$pro_code = $post['code'];
+	$pro_name = $post['name'];
+	$pro_price = $post['price'];
+	$pro_image_name_old = $post['image_name_old'];
 	$pro_image = $_FILES['image'];
 
-	// 入力情報の安全対策
-	$pro_code = htmlspecialchars($pro_code,ENT_QUOTES,'UTF-8');
-	$pro_name = htmlspecialchars($pro_name,ENT_QUOTES,'UTF-8');
-	$pro_price = htmlspecialchars($pro_price,ENT_QUOTES,'UTF-8');
+	require_once('../common/common.php')
 
 	if($pro_name == ''){
 		print '商品名が入力されていません。<br />';
