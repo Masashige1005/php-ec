@@ -1,14 +1,15 @@
 <?php
 session_start();
-// 現在のセッションIDを 新しいものと置き換える。その際、現在のセッション情報は維持
 session_regenerate_id(true);
-if(isset($_SESSION['login'])==FALSE){
-	print 'ログインされていません。<br />';
-	print '<a href="../staff_login/staff_login.html">ログイン画面へ</a>';
-	exit();
+if(isset($_SESSION['member_login']) == FALSE){
+	print 'ようこそ、ゲスト様';
+	print '<a href="member_login.html">会員ログイン</a><br />';
+	print '<br />';
 } else {
-	print $_SESSION['staff_name'];
-	print 'さんログイン中<br />';
+	print 'ようこそ';
+	print $_SESSION['member_name'];
+	print '様';
+	print '<a href="member_logout.html">ログアウト</a><br />';
 	print '<br />';
 }
 ?>
@@ -43,8 +44,9 @@ if(isset($_SESSION['login'])==FALSE){
 		if($pro_image_name == ''){
 			$disp_image = '';
 		} else {
-			$disp_image = '<img src = "./image/'.$pro_image_name.'">';
+			$disp_image = '<img src = "../product/image/'.$pro_image_name.'">';
 		}
+	print '<a href="shop_cartin.php?procode='.$pro_code.'">カートに入れる</a><br /><br />';
 	}
 
 	// データベースの障害が発生した時の処理
