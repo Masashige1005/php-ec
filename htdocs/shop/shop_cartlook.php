@@ -63,7 +63,8 @@ if(isset($_SESSION['member_login']) == FALSE){
 		<?php print $pro_name[$i]; ?>
 		<?php print $pro_image[$i]; ?>
 		<?php print $pro_price[$i].'円'; ?>
-		<input type = "text" name = "quan<?php print $quan[$i]; ?>" value = "<?php print $quan[$i]; ?>" ?>
+		<input type = "text" name = "quan<?php print $i;?>" value = "<?php print $quan[$i];?>">
+		<?php print $pro_price[$i]*$quan[$i];?>円
 		<?php print '<br />'; ?>
 	<?php } ?>
 		<input type = "hidden" name = "max" value = "<?php print $max; ?>">
