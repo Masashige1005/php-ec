@@ -20,13 +20,13 @@ if(isset($_SESSION['login'])==FALSE){
 </head>
 <body>
 	<?php
+	require_once('../common/common.php');
+
 	$post = sanitize($_POST);
 	$pro_name = $post['name'];
 	$pro_price = $post['price'];
 	// 画像の場合は$_FILESを使う
 	$pro_image = $_FILES['image'];
-
-	require_once('../common/common.php')
 
 	if($pro_name == ''){
 		print '商品名が入力されていません。<br />';

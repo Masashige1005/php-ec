@@ -27,10 +27,13 @@ if(isset($_SESSION['member_login']) == FALSE){
 		if(isset($_SESSION['cart'])==true){
 			// カートの内容をコピー
 			$cart = $_SESSION['cart'];
+			$quan = $_SESSION["quan"];
 		}
 		// カートに商品を追加
 		$cart[] = $pro_code;
+		$quan[] = 1;
 		$_SESSION['cart'] = $cart;
+		$_SESSION['quan'] = $quan;
 	}
 	// データベースの障害が発生した時の処理
 	catch (Exception $e){

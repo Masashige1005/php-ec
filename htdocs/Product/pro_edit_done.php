@@ -21,14 +21,14 @@ if(isset($_SESSION['login'])==FALSE){
 <body>
 	<?php
 	try{
+		require_once('../common/common.php');
+
 		$post = sanitize($_POST);
 		$pro_code = $post['code'];
 		$pro_name = $post['name'];
 		$pro_price = $post['price'];
 		$pro_image_name_old = $post['image_name_old'];
 		$pro_image_name = $post['image_name'];
-
-		require_once('../common/common.php')
 
 		// データベースへの接続
 		$dsn = 'mysql:dbname=app-db;host=localhost;charset=utf8';

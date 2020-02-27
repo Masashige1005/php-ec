@@ -20,15 +20,14 @@ if(isset($_SESSION['login'])==FALSE){
 </head>
 <body>
 	<?php
+	// インクルード先を指定
+	require_once('../common/common.php');
+
 	// 特殊文字にサニタイズ(安全対策)
 	$post = sanitize($_POST);
 	$staff_name = $post['name'];
 	$staff_pass = $post['pass'];
 	$staff_pass2 = $post['pass2'];
-
-	// インクルード先を指定
-	require_once('../common/common.php')
-
 
 	if($staff_name == ''){
 		print 'スタッフの名前が入力されていません。<br />';

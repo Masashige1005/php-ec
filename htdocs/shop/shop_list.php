@@ -49,6 +49,9 @@ if(isset($_SESSION['member_login']) == FALSE){
 			print '</a>';
 			print '<br />';
 		}
+
+		print '<br />';
+		print '<a href="shop_cartlook.php">カートを見る</a><br />';
 	}
 	// データベースの障害が発生した時の処理
 	catch (Exception $e){
