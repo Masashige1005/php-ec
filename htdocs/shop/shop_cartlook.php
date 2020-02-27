@@ -65,6 +65,7 @@ if(isset($_SESSION['member_login']) == FALSE){
 		<?php print $pro_price[$i].'円'; ?>
 		<input type = "text" name = "quan<?php print $i;?>" value = "<?php print $quan[$i];?>">
 		<?php print $pro_price[$i]*$quan[$i];?>円
+		<input type = "checkbox" name = "delete<?php print $i;?>">
 		<?php print '<br />'; ?>
 	<?php } ?>
 		<input type = "hidden" name = "max" value = "<?php print $max; ?>">
