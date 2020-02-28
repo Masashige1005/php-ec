@@ -22,9 +22,21 @@ if(isset($_SESSION['member_login']) == FALSE){
 <body>
 	<?php
 	try{
-		$cart = $_SESSION['cart'];
-		$quan = $_SESSION['quan'];
-		$max = count($cart);
+		if(isset($_SESSION['cart']) == TRUE){
+			$cart = $_SESSION['cart'];
+			$quan = $_SESSION['quan'];
+			$max = count($cart);
+		} else{
+			// カートが空の状態でカートの中身を見たときは中身を0にする
+			$max = 0;
+		}
+
+		if($max == 0){
+			print 'カートに商品が入っていません。<br />';
+			print '<br />';
+			print '<a href="shop_list.php">商品一覧に戻る</a>';
+			exit();
+		}
 		// データベースへの接続
 		$dsn = 'mysql:dbname=app-db;host=localhost;charset=utf8';
 		$user = 'root';
