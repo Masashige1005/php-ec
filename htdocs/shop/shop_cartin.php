@@ -28,6 +28,11 @@ if(isset($_SESSION['member_login']) == FALSE){
 			// カートの内容をコピー
 			$cart = $_SESSION['cart'];
 			$quan = $_SESSION["quan"];
+			if(in_array($pro_code,$cart) == TRUE){
+				print 'その商品はすでにカートに入ってます。';
+				print '<a href="shop_list.php">商品一覧に戻る</a>';
+				exit();
+			}
 		}
 		// カートに商品を追加
 		$cart[] = $pro_code;
