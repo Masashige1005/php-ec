@@ -8,14 +8,8 @@
 
 	$max = $post['max'];
 	for($i=0;$i<$max;$i++){
-		// 正規表現（数以外が入力された時にエラーを起こす）
-		// if(preg_match("/¥A[0-9]+¥z/", $post['quan'.$i]) == 0){
-		// 	print '数量に誤りがあります。';
-		// 	print '<a href="shop_cartlook.php">カートに戻る</a>';
-		// 	exit();
-		// }
-		if($post['quan'.$i] < 1 || 10 < $post['quan'.$i]){
-			print '数量は1〜10までの間で設定してください。';
+		if(preg_match("/¥A[0-9]+¥z/", $post['quan'.$i]) == 0){
+			print '数量に誤りがあります。';
 			print '<a href="shop_cartlook.php">カートに戻る</a>';
 			exit();
 		}
