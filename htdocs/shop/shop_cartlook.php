@@ -45,7 +45,7 @@ if(isset($_SESSION['member_login']) == FALSE){
 		$dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
 		foreach($cart as $key => $val){
-			$sql = 'SELECT code,name,price,image FROM mst_product WHERE code=?';
+			$sql = 'SELECT code,name,price,image FROM mst_products WHERE code=?';
 			$stmt = $dbh->prepare($sql);
 			$data[0] = $val;
 			$stmt -> execute($data);

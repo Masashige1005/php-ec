@@ -29,7 +29,7 @@ if(isset($_SESSION['member_login']) == FALSE){
 		$dbh = new PDO($dsn,$user,$password);
 		$dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 		// データベースから名前を全て取得
-		$sql = 'SELECT code,name,price FROM mst_product WHERE 1';
+		$sql = 'SELECT code,name,price FROM mst_products WHERE 1';
 		$stmt = $dbh->prepare($sql);
 		$stmt->execute();
 		// データベースから切断

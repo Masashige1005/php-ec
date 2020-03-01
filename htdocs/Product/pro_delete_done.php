@@ -31,7 +31,7 @@ if(isset($_SESSION['login'])==FALSE){
 		$dbh = new PDO($dsn,$user,$password);
 		$dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 		// SQL文を使いレコードを変更
-		$sql = 'DELETE FROM mst_product WHERE code=?';
+		$sql = 'DELETE FROM mst_products WHERE code=?';
 		$stmt = $dbh->prepare($sql);
 		$data[] = $pro_code;
 		$stmt->execute($data);

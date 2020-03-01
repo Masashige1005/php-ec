@@ -28,7 +28,7 @@ if(isset($_SESSION['login'])==FALSE){
 		$dbh = new PDO($dsn,$user,$password);
 		$dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 		// データベースから名前を全て取得
-		$sql = 'SELECT code,name FROM mst_staff WHERE 1';
+		$sql = 'SELECT code,name FROM mst_staffs WHERE 1';
 		$stmt = $dbh->prepare($sql);
 		$stmt->execute();
 		// データベースから切断

@@ -21,7 +21,7 @@
 		$dbh = new PDO($dsn,$user,$password);
 		$dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
-		$sql = 'SELECT name FROM mst_staff WHERE code=? AND password=?';
+		$sql = 'SELECT name FROM mst_staffs WHERE code=? AND password=?';
 		$stmt = $dbh->prepare($sql);
 		$data[] = $staff_code;
 		$data[] = $staff_pass;

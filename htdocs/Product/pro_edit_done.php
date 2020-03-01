@@ -37,7 +37,7 @@ if(isset($_SESSION['login'])==FALSE){
 		$dbh = new PDO($dsn,$user,$password);
 		$dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 		// SQL文を使いレコードを変更
-		$sql = 'UPDATE mst_product SET name=?,price=?,image=? WHERE code=?';
+		$sql = 'UPDATE mst_products SET name=?,price=?,image=? WHERE code=?';
 		$stmt = $dbh->prepare($sql);
 		$data[] = $pro_name;
 		$data[] = $pro_price;

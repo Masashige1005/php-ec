@@ -35,7 +35,7 @@ if(isset($_SESSION['login'])==FALSE){
 		$dbh = new PDO($dsn,$user,$password);
 		$dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 		// SQL文を使いレコードを変更
-		$sql = 'UPDATE mst_staff SET name=?,password=? WHERE code=?';
+		$sql = 'UPDATE mst_staffs SET name=?,password=? WHERE code=?';
 		$stmt = $dbh->prepare($sql);
 		$data[] = $staff_name;
 		$data[] = $staff_pass;

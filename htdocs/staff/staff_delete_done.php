@@ -30,7 +30,7 @@ if(isset($_SESSION['login'])==FALSE){
 		$dbh = new PDO($dsn,$user,$password);
 		$dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 		// SQL文を使いレコードを変更
-		$sql = 'DELETE FROM mst_staff WHERE code=?';
+		$sql = 'DELETE FROM mst_staffs WHERE code=?';
 		$stmt = $dbh->prepare($sql);
 		$data[] = $staff_code;
 		$stmt->execute($data);

@@ -35,7 +35,7 @@ if(isset($_SESSION['login'])==FALSE){
 		$dbh = new PDO($dsn,$user,$password);
 		$dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 		// SQLを使いレコードを追加
-		$sql = 'INSERT INTO mst_product(name,price,image)VALUES(?,?,?)';
+		$sql = 'INSERT INTO mst_products(name,price,image)VALUES(?,?,?)';
 		$stmt = $dbh->prepare($sql);
 		$data[] = $pro_name;
 		$data[] = $pro_price;

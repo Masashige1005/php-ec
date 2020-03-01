@@ -29,7 +29,7 @@ if(isset($_SESSION['login'])==FALSE){
 		$dbh = new PDO($dsn,$user,$password);
 		$dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 		// データベースから選択された名前を取得
-		$sql = 'SELECT name FROM mst_staff WHERE code=?';
+		$sql = 'SELECT name FROM mst_staffs WHERE code=?';
 		$stmt = $dbh->prepare($sql);
 		$data[] = $staff_code;
 		$stmt->execute($data);
