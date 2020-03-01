@@ -21,11 +21,10 @@ if(isset($_SESSION['login'])==FALSE){
 <body>
 	<?php
 	try{
+		require_once('../common/common.php');
 		$post = sanitize($_POST);
 		$staff_name = $post['name'];
 		$staff_pass = $post['pass'];
-
-		require_once('../common/common.php')
 
 		// データベースへの接続
 		$dsn = 'mysql:dbname=app-db;host=localhost;charset=utf8';

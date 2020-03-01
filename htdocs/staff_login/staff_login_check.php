@@ -7,11 +7,10 @@
 <body>
 	<?php
 	try{
+		require_once('../common/common.php');
 		$post = sanitize($_POST);
 		$staff_code = $post['code'];
 		$staff_pass = $post['pass'];
-
-		require_once('../common/common.php')
 
 		$staff_pass = md5($staff_pass);
 

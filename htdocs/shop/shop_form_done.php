@@ -53,6 +53,7 @@ session_regenerate_id(true);
 			$rec = $stmt ->fetch(PDO::FETCH_ASSOC);
 			$pro_name = $rec['name'];
 			$pro_price = $rec['price'];
+			$cost[] = $pro_price;
 			$stock = $quan[$i];
 			$sub_price = $pro_price * $stock;
 
@@ -61,7 +62,45 @@ session_regenerate_id(true);
 			$text.= $stock.'個 = ';
 			$text.= $sub_price."円 \n";
 		}
-		$dnh = null;
+
+		$sql = 'LOCK TABLES dat_sales WRITE,dat_sales_product WRITE';
+		$stmt = $dbh->prepare($sql);
+		$stmt->execute();
+
+		$sql = 'INSERT INTO dat_sales(code_member,name,email,postal1,postal2,address,tel) VALUES(?,?,?,?,?,?,?)';
+		$stmt = $dbh->prepare($sql);
+		$data = array();
+		$data[] = 0;
+		$data[] = $name;
+		$data[] = $email;
+		$data[] = $postal1;
+		$data[] = $postal2;
+		$data[] = $address;
+		$data[] = $tel;
+		$stmt->execute($data);
+
+		// オートインクリメントで発番された番号を取得
+		$sql = 'SELECT LAST_INSERT_ID()';
+		$stmt = $dbh->prepare($sql);
+		$stmt->execute();
+		$rec = $stmt->fetch(PDO::FETCH_ASSOC);
+		$lastcode = $rec['LAST_INSERT_ID()'];
+
+		for($i=0;$i<$max;$i++){
+			$sql = 'INSERT INTO dat_sales_product(code_sales,code_product,price,quantity) VALUES(?,?,?,?)';
+			$stmt = $dbh->prepare($sql);
+			$data = array();
+			$data[] = $lastcode;
+			$data[] = $cart[$i];
+			$data[] = $cost[$i];
+			$data[] = $quan[$i];
+			// ★
+			$stmt->execute($data);
+		}
+
+		$sql = 'UNLOCK TABLES';
+		$stmt = $dbh->prepare($sql);
+		$stmt->execute();
 
 		$text.="送料は無料です。\n";
 		$text.="----------------\n";
@@ -92,6 +131,8 @@ session_regenerate_id(true);
 		mb_internal_encoding('UTF-8');
 		mb_send_mail('info@php.co.jp', $title,$text, $header);
 
+		$dnh = null;
+
 	}
 
 	catch (Exception $e){
@@ -99,5 +140,8 @@ session_regenerate_id(true);
 		exit();
 	}
 	?>
+
+	<br />
+	<a href = "shop_list.php">商品画面</a>
 </body>
 </html>
