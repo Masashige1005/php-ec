@@ -98,5 +98,10 @@ if(isset($_SESSION['member_login']) == FALSE){
 	</form>
 	<br />
 	<a href = "shop_form.html">購入手続きへ進む</a><br />
+	<?php
+	if(isset($_SESSION["member_login"]) == true){
+		print '<a href="shop_easy_check.php">会員簡単注文へ進む</a><br />';
+	}
+	?>
 </body>
 </html>

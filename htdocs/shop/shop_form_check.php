@@ -15,6 +15,11 @@
 	$postal2 = $post['postal2'];
 	$address = $post['address'];
 	$tel = $post['tel'];
+	$order = $post['order'];
+	$pass = $post['pass'];
+	$pass2 = $post['pass2'];
+	$sex = $post['sex'];
+	$birth = $post['birth'];
 
 	$okflg = true;
 
@@ -80,6 +85,29 @@
 		$okflg = true;
 	// }
 
+	if($order == 'order_join'){
+		if($pass = ''){
+			print 'パスワードが入力されていません。<br /><br />';
+			$okflg = false;
+		}
+		if($pass2 == $pass){
+			print 'パスワードが一致しません。<br /><br />';
+			$okflg = false;
+		}
+		print '性別<br />';
+		if($sex == 'men'){
+			print '男性';
+		} else {
+			print '女性';
+		}
+		print '<br /><br />';
+
+		print '生年月日<br />';
+		print $birth;
+		print '年代';
+		print '<br /><br />';
+	}
+
 	if($okflg == true){
 		print '<form method = "post" action = "shop_form_done.php">';
 		print '<input type = "hidden" name = "name" value = "'.$name.'">';
@@ -88,6 +116,11 @@
 		print '<input type = "hidden" name = "postal2" value = "'.$postal2.'">';
 		print '<input type = "hidden" name = "address" value = "'.$address.'">';
 		print '<input type = "hidden" name = "tel" value = "'.$tel.'">';
+		print '<input type = "hidden" name = "order" value = "'.$order.'">';
+		print '<input type = "hidden" name = "pass" value = "'.$pass.'">';
+		print '<input type = "hidden" name = "pass2" value = "'.$pass2.'">';
+		print '<input type = "hidden" name = "sex" value = "'.$sex.'">';
+		print '<input type = "hidden" name = "birth" value = "'.$birth.'">';
 		print '<input type = "submit" value = "OK"><br />';
 		print '</form>';
 	}
